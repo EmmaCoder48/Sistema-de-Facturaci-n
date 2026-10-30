@@ -2,6 +2,8 @@
 
 Código del sistema descrito en [`../claude/Architecture.md`](../claude/Architecture.md). Este es el entorno del **Sprint 0**: el esqueleto ya compila, se conecta a PostgreSQL y tiene pruebas automáticas, pero todavía no implementa historias de usuario.
 
+> **¿Máquina nueva?** La guía paso a paso con los comandos de instalación y los enlaces de descarga está en [`setup.md`](setup.md).
+
 ## Requisitos
 
 | Herramienta | Versión | Para qué |
