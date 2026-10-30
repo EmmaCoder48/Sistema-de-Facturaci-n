@@ -1,0 +1,40 @@
+spring:
+  application:
+    name: pos-backend
+  profiles:
+    default: dev
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate          # el esquema lo define Flyway, nunca Hibernate
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    locations: classpath:db/migration
+  jackson:
+    time-zone: America/Guatemala
+
+server:
+  port: 8080
+  error:
+    include-stacktrace: never
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: never
+
+pos:
+  version: '@project.version@'
+  fel:
+    # simulado: CertificadorFelSimulado (desarrollo y pruebas). rest: adaptador real (pendiente, Sprint 4).
+    modo: simulado
+    simulador:
+      # ACEPTAR, RECHAZAR o SIN_CONEXION, para probar certificación, rechazos y contingencia.
+      escenario: ACEPTAR

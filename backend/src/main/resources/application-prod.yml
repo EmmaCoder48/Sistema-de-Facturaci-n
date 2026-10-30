@@ -1,0 +1,13 @@
+# Perfil del servidor local del supermercado. Todo se toma de variables de entorno, sin valores por defecto.
+spring:
+  datasource:
+    url: jdbc:postgresql://${POS_DB_HOST}:${POS_DB_PORT}/${POS_DB_NAME}
+    username: pos_app
+    password: ${POS_APP_PASSWORD}
+  flyway:
+    user: pos_owner
+    password: ${POS_OWNER_PASSWORD}
+
+pos:
+  fel:
+    modo: ${POS_FEL_MODO}

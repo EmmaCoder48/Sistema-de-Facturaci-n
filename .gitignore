@@ -1,0 +1,17 @@
+# Entorno
+.env
+
+# Backend (ver también backend/.gitignore)
+backend/target/
+
+# Frontend
+node_modules/
+frontend/dist/
+*.tsbuildinfo
+
+# Editores y sistema
+.idea/
+.vscode/
+*.log
+.DS_Store
+Thumbs.db

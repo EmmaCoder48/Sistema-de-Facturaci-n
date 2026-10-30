@@ -1,0 +1,27 @@
+# Base de datos PostgreSQL local para desarrollo (Architecture.md §3 y §5.3).
+# Uso: docker compose up -d
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: pos-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres_dev}
+      POS_DB_NAME: ${POS_DB_NAME:-pos_db}
+      POS_OWNER_PASSWORD: ${POS_OWNER_PASSWORD:-pos_owner_dev}
+      POS_APP_PASSWORD: ${POS_APP_PASSWORD:-pos_app_dev}
+      TZ: America/Guatemala
+    ports:
+      - "${POS_DB_PORT:-5433}:5432"
+    volumes:
+      - pos-datos:/var/lib/postgresql/data
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d ${POS_DB_NAME:-pos_db}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  pos-datos:

@@ -1,0 +1,11 @@
+# Perfil de desarrollo: PostgreSQL levantado con docker compose (ver ../docker-compose.yml).
+# Los valores por defecto coinciden con .env.example; se pueden cambiar con variables de entorno.
+spring:
+  datasource:
+    url: jdbc:postgresql://${POS_DB_HOST:localhost}:${POS_DB_PORT:5433}/${POS_DB_NAME:pos_db}
+    username: pos_app
+    password: ${POS_APP_PASSWORD:pos_app_dev}
+  flyway:
+    # Las migraciones corren con el dueño del esquema; la aplicación usa pos_app (Architecture.md §5.3).
+    user: pos_owner
+    password: ${POS_OWNER_PASSWORD:pos_owner_dev}
